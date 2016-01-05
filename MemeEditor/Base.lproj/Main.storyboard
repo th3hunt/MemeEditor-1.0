@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -58,6 +59,9 @@
                                 <exclude reference="9L4-ue-xae"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="Cwp-Ty-l9Y"/>
+                                <exclude reference="lF4-H9-yAf"/>
+                                <exclude reference="x6w-LS-gab"/>
                                 <exclude reference="ccw-fd-Hrf"/>
                                 <exclude reference="tv8-5i-dqq"/>
                                 <exclude reference="xhM-oS-PbG"/>
@@ -65,9 +69,6 @@
                                 <exclude reference="8Dz-a9-0Cl"/>
                                 <exclude reference="cKV-h9-Dxu"/>
                                 <exclude reference="xYm-PY-Ksb"/>
-                                <exclude reference="Cwp-Ty-l9Y"/>
-                                <exclude reference="lF4-H9-yAf"/>
-                                <exclude reference="x6w-LS-gab"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular">
@@ -77,6 +78,9 @@
                                 <include reference="9L4-ue-xae"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="Cwp-Ty-l9Y"/>
+                                <include reference="lF4-H9-yAf"/>
+                                <include reference="x6w-LS-gab"/>
                                 <include reference="ccw-fd-Hrf"/>
                                 <include reference="tv8-5i-dqq"/>
                                 <include reference="xhM-oS-PbG"/>
@@ -84,12 +88,14 @@
                                 <include reference="8Dz-a9-0Cl"/>
                                 <include reference="cKV-h9-Dxu"/>
                                 <include reference="xYm-PY-Ksb"/>
-                                <include reference="Cwp-Ty-l9Y"/>
-                                <include reference="lF4-H9-yAf"/>
-                                <include reference="x6w-LS-gab"/>
                             </mask>
                         </variation>
                     </view>
+                    <connections>
+                        <outlet property="cameraButton" destination="Cc7-6n-iYB" id="QjM-cx-QMS"/>
+                        <outlet property="imageView" destination="9L4-ue-xae" id="Hcs-To-nDc"/>
+                        <outlet property="shareButton" destination="O7w-Kx-WQo" id="EY7-Rq-1xW"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
