@@ -5,10 +5,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Editor View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="MemeEditor" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="EditorViewController" customModule="MemeEditor" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -16,7 +16,72 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="500" placeholderIntrinsicHeight="712" translatesAutoresizingMaskIntoConstraints="NO" id="QIk-xe-gAy">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <variation key="heightClass=regular" misplaced="YES">
+                                    <rect key="frame" x="300" y="44" width="0.0" height="712"/>
+                                </variation>
+                            </imageView>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ulf-PG-xVi">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                            </navigationBar>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3ht-4W-T2e">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                <items/>
+                            </toolbar>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="3ht-4W-T2e" firstAttribute="leading" secondItem="ulf-PG-xVi" secondAttribute="leading" id="7Fb-UW-DzY"/>
+                            <constraint firstItem="QIk-xe-gAy" firstAttribute="top" secondItem="ulf-PG-xVi" secondAttribute="bottom" id="8fy-mR-k2e"/>
+                            <constraint firstItem="ulf-PG-xVi" firstAttribute="centerX" secondItem="QIk-xe-gAy" secondAttribute="centerX" id="9Wc-ET-WCM"/>
+                            <constraint firstItem="QIk-xe-gAy" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="GaN-XR-BVB"/>
+                            <constraint firstItem="QIk-xe-gAy" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="HPZ-0q-pxG"/>
+                            <constraint firstItem="3ht-4W-T2e" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="NQO-3Y-OgY"/>
+                            <constraint firstItem="ulf-PG-xVi" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="Q2i-bx-Yw5"/>
+                            <constraint firstItem="3ht-4W-T2e" firstAttribute="centerX" secondItem="QIk-xe-gAy" secondAttribute="centerX" id="iRc-sy-VpI"/>
+                            <constraint firstItem="ulf-PG-xVi" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="rJb-ZN-Hry"/>
+                            <constraint firstItem="QIk-xe-gAy" firstAttribute="bottom" secondItem="3ht-4W-T2e" secondAttribute="top" id="zVB-R8-rCb"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="QIk-xe-gAy"/>
+                                <exclude reference="ulf-PG-xVi"/>
+                                <exclude reference="3ht-4W-T2e"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="9Wc-ET-WCM"/>
+                                <exclude reference="Q2i-bx-Yw5"/>
+                                <exclude reference="rJb-ZN-Hry"/>
+                                <exclude reference="8fy-mR-k2e"/>
+                                <exclude reference="GaN-XR-BVB"/>
+                                <exclude reference="HPZ-0q-pxG"/>
+                                <exclude reference="zVB-R8-rCb"/>
+                                <exclude reference="7Fb-UW-DzY"/>
+                                <exclude reference="NQO-3Y-OgY"/>
+                                <exclude reference="iRc-sy-VpI"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular">
+                            <mask key="subviews">
+                                <include reference="QIk-xe-gAy"/>
+                                <include reference="ulf-PG-xVi"/>
+                                <include reference="3ht-4W-T2e"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="9Wc-ET-WCM"/>
+                                <include reference="Q2i-bx-Yw5"/>
+                                <include reference="rJb-ZN-Hry"/>
+                                <include reference="8fy-mR-k2e"/>
+                                <include reference="GaN-XR-BVB"/>
+                                <include reference="HPZ-0q-pxG"/>
+                                <include reference="zVB-R8-rCb"/>
+                                <include reference="7Fb-UW-DzY"/>
+                                <include reference="NQO-3Y-OgY"/>
+                                <include reference="iRc-sy-VpI"/>
+                            </mask>
+                        </variation>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
