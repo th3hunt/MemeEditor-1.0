@@ -90,6 +90,11 @@
                             </mask>
                         </variation>
                     </view>
+                    <connections>
+                        <outlet property="cameraButton" destination="Cc7-6n-iYB" id="QjM-cx-QMS"/>
+                        <outlet property="imageView" destination="9L4-ue-xae" id="Hcs-To-nDc"/>
+                        <outlet property="shareButton" destination="O7w-Kx-WQo" id="EY7-Rq-1xW"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
