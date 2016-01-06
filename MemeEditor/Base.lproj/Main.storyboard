@@ -19,15 +19,18 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ulf-PG-xVi">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                 <items>
                                     <navigationItem id="Qe2-js-ORV">
                                         <barButtonItem key="rightBarButtonItem" systemItem="action" id="O7w-Kx-WQo" userLabel="Share"/>
                                     </navigationItem>
                                 </items>
+                                <variation key="heightClass=regular" ambiguous="YES" misplaced="YES">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                </variation>
                             </navigationBar>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3ht-4W-T2e">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="556" width="600" height="44"/>
                                 <items>
                                     <barButtonItem systemItem="camera" id="Cc7-6n-iYB" userLabel="Camera">
                                         <connections>
@@ -43,7 +46,10 @@
                                 </items>
                             </toolbar>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9L4-ue-xae">
-                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <rect key="frame" x="20" y="44" width="560" height="512"/>
+                                <variation key="heightClass=regular" ambiguous="YES" misplaced="YES">
+                                    <rect key="frame" x="20" y="44" width="560" height="712"/>
+                                </variation>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -59,44 +65,6 @@
                             <constraint firstItem="9L4-ue-xae" firstAttribute="top" secondItem="ulf-PG-xVi" secondAttribute="bottom" id="xYm-PY-Ksb"/>
                             <constraint firstItem="ulf-PG-xVi" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailing" id="xhM-oS-PbG"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="subviews">
-                                <exclude reference="ulf-PG-xVi"/>
-                                <exclude reference="3ht-4W-T2e"/>
-                                <exclude reference="9L4-ue-xae"/>
-                            </mask>
-                            <mask key="constraints">
-                                <exclude reference="ccw-fd-Hrf"/>
-                                <exclude reference="tv8-5i-dqq"/>
-                                <exclude reference="xhM-oS-PbG"/>
-                                <exclude reference="6GL-BS-Rbv"/>
-                                <exclude reference="8Dz-a9-0Cl"/>
-                                <exclude reference="cKV-h9-Dxu"/>
-                                <exclude reference="xYm-PY-Ksb"/>
-                                <exclude reference="Cwp-Ty-l9Y"/>
-                                <exclude reference="lF4-H9-yAf"/>
-                                <exclude reference="x6w-LS-gab"/>
-                            </mask>
-                        </variation>
-                        <variation key="heightClass=regular">
-                            <mask key="subviews">
-                                <include reference="ulf-PG-xVi"/>
-                                <include reference="3ht-4W-T2e"/>
-                                <include reference="9L4-ue-xae"/>
-                            </mask>
-                            <mask key="constraints">
-                                <include reference="ccw-fd-Hrf"/>
-                                <include reference="tv8-5i-dqq"/>
-                                <include reference="xhM-oS-PbG"/>
-                                <include reference="6GL-BS-Rbv"/>
-                                <include reference="8Dz-a9-0Cl"/>
-                                <include reference="cKV-h9-Dxu"/>
-                                <include reference="xYm-PY-Ksb"/>
-                                <include reference="Cwp-Ty-l9Y"/>
-                                <include reference="lF4-H9-yAf"/>
-                                <include reference="x6w-LS-gab"/>
-                            </mask>
-                        </variation>
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>
                     <connections>
