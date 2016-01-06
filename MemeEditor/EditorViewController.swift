@@ -17,15 +17,20 @@ class EditorViewController: UIViewController, UIImagePickerControllerDelegate, U
     override func viewDidLoad() {
         imageView.contentMode = .ScaleAspectFit
         shareButton.enabled = false
-        cameraButton.enabled = self.isCameraAvailable()
+        cameraButton.enabled = isCameraAvailable()
         super.viewDidLoad()
     }
     
-    @IBAction func pickAnImage(sender: UIBarButtonItem) {
-        let imagePicker = UIImagePickerController()
-        imagePicker.delegate = self
-        imagePicker.sourceType = .SavedPhotosAlbum
-        presentViewController(imagePicker, animated: true, completion: nil)
+    @IBAction func pickAnImageFromLibrary(sender: UIBarButtonItem) {
+        pickAnImage(.SavedPhotosAlbum)
+    }
+    
+    @IBAction func pickAnImageFromCamera(sender: UIBarButtonItem) {
+        guard isCameraAvailable() else {
+            return
+        }
+        
+        pickAnImage(.Camera)
     }
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
@@ -41,6 +46,12 @@ class EditorViewController: UIViewController, UIImagePickerControllerDelegate, U
         dismissViewControllerAnimated(true, completion: nil)
     }
     
+    private func pickAnImage(sourceType: UIImagePickerControllerSourceType) {
+        let imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
+        imagePicker.sourceType = sourceType
+        presentViewController(imagePicker, animated: true, completion: nil)
+    }
     
     private func isCameraAvailable() -> Bool {
        return UIImagePickerController.isSourceTypeAvailable(.Camera)
