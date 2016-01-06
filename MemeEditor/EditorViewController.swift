@@ -13,9 +13,19 @@ class EditorViewController: UIViewController, UIImagePickerControllerDelegate, U
     @IBOutlet weak var shareButton: UIBarButtonItem!
     @IBOutlet weak var cameraButton: UIBarButtonItem!
     @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var topTextField: UITextField!
+    @IBOutlet weak var bottomTextField: UITextField!
+    
+    static let memeTextAttributes = [
+        NSStrokeColorAttributeName: UIColor.blackColor(),
+        NSForegroundColorAttributeName: UIColor.whiteColor(),
+        NSFontAttributeName: UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
+        NSStrokeWidthAttributeName: -2.0 // a negative value indicates stroke with fill https://developer.apple.com/library/mac/qa/qa1531/_index.html
+    ]
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupTextFields()
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -23,6 +33,7 @@ class EditorViewController: UIViewController, UIImagePickerControllerDelegate, U
         imageView.contentMode = .ScaleAspectFit
         shareButton.enabled = false
         cameraButton.enabled = isCameraAvailable()
+        hideTextFields()
     }
     
     //
@@ -47,12 +58,14 @@ class EditorViewController: UIViewController, UIImagePickerControllerDelegate, U
     //
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
-        if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
-            imageView.image = image
-        } else {
-            showError("Could not select a picture")
+        dismissViewControllerAnimated(true) {
+            if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
+                self.imageView.image = image
+                self.showTextFields()
+            } else {
+                self.showError("Could not select a picture")
+            }
         }
-        dismissViewControllerAnimated(true, completion: nil)
     }
     
     func imagePickerControllerDidCancel(picker: UIImagePickerController) {
@@ -73,6 +86,24 @@ class EditorViewController: UIViewController, UIImagePickerControllerDelegate, U
     
     private func isCameraAvailable() -> Bool {
        return UIImagePickerController.isSourceTypeAvailable(.Camera)
+    }
+    
+    private func setupTextFields() {
+        topTextField.defaultTextAttributes = EditorViewController.memeTextAttributes
+        topTextField.textAlignment = .Center
+
+        bottomTextField.defaultTextAttributes = EditorViewController.memeTextAttributes
+        bottomTextField.textAlignment = .Center
+    }
+    
+    private func showTextFields() {
+        topTextField.hidden = false
+        bottomTextField.hidden = false
+    }
+    
+    private func hideTextFields() {
+        topTextField.hidden = true
+        bottomTextField.hidden = true
     }
     
     private func showError(message: String = "Oops! An unknown error occurred.") {
