@@ -25,6 +25,10 @@ class EditorViewController: UIViewController, UIImagePickerControllerDelegate, U
         cameraButton.enabled = isCameraAvailable()
     }
     
+    //
+    // Actions
+    //
+    
     @IBAction func pickAnImageFromAlbum(sender: UIBarButtonItem) {
         pickAnImage(.SavedPhotosAlbum)
     }
@@ -36,6 +40,11 @@ class EditorViewController: UIViewController, UIImagePickerControllerDelegate, U
         
         pickAnImage(.Camera)
     }
+    
+    
+    //
+    // UIImagePickerControllerDelegate
+    //
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
@@ -49,6 +58,11 @@ class EditorViewController: UIViewController, UIImagePickerControllerDelegate, U
     func imagePickerControllerDidCancel(picker: UIImagePickerController) {
         dismissViewControllerAnimated(true, completion: nil)
     }
+    
+    
+    //
+    // Private Methods
+    //
     
     private func pickAnImage(sourceType: UIImagePickerControllerSourceType) {
         let imagePicker = UIImagePickerController()
