@@ -91,6 +91,7 @@
                             </mask>
                         </variation>
                     </view>
+                    <nil key="simulatedStatusBarMetrics"/>
                     <connections>
                         <outlet property="cameraButton" destination="Cc7-6n-iYB" id="QjM-cx-QMS"/>
                         <outlet property="imageView" destination="9L4-ue-xae" id="Hcs-To-nDc"/>
