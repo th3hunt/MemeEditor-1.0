@@ -25,7 +25,7 @@ class EditorViewController: UIViewController, UIImagePickerControllerDelegate, U
         cameraButton.enabled = isCameraAvailable()
     }
     
-    @IBAction func pickAnImageFromLibrary(sender: UIBarButtonItem) {
+    @IBAction func pickAnImageFromAlbum(sender: UIBarButtonItem) {
         pickAnImage(.SavedPhotosAlbum)
     }
     
