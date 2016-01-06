@@ -8,7 +8,7 @@
 
 import UIKit
 
-class EditorViewController: UIViewController, UIImagePickerControllerDelegate {
+class EditorViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     @IBOutlet weak var shareButton: UIBarButtonItem!
     @IBOutlet weak var cameraButton: UIBarButtonItem!
@@ -25,7 +25,19 @@ class EditorViewController: UIViewController, UIImagePickerControllerDelegate {
         cameraButton.enabled = isCameraAvailable()
     }
     
+    @IBAction func pickAnImage(sender: UIBarButtonItem) {
+        let imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
+        imagePicker.sourceType = .SavedPhotosAlbum
+        presentViewController(imagePicker, animated: true, completion: nil)
+    }
+    
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+        if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            imageView.image = image
+        } else {
+            showError("Could not select a picture")
+        }
         dismissViewControllerAnimated(true, completion: nil)
     }
     
@@ -36,6 +48,17 @@ class EditorViewController: UIViewController, UIImagePickerControllerDelegate {
     
     private func isCameraAvailable() -> Bool {
        return UIImagePickerController.isSourceTypeAvailable(.Camera)
+    }
+    
+    private func showError(message: String = "Oops! An unknown error occurred.") {
+        let alertController = UIAlertController(title: "Error", message: message, preferredStyle: UIAlertControllerStyle.Alert)
+        alertController.addAction(
+            UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default) {
+                [unowned self] (UIAlertAction) in
+                self.dismissViewControllerAnimated(true, completion: nil)
+            }
+        )
+        presentViewController(alertController, animated: true, completion: nil)
     }
     
 }
