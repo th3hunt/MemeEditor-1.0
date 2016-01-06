@@ -49,21 +49,39 @@
                                 </items>
                             </toolbar>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9L4-ue-xae">
-                                <rect key="frame" x="20" y="44" width="560" height="512"/>
+                                <rect key="frame" x="20" y="44" width="559" height="512"/>
                                 <variation key="heightClass=regular" ambiguous="YES" misplaced="YES">
                                     <rect key="frame" x="20" y="44" width="560" height="712"/>
                                 </variation>
                             </imageView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="TOP" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Q3u-QO-mku" userLabel="TopText">
+                                <rect key="frame" x="40" y="74" width="519" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" autocorrectionType="no"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="BOTTOM" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="x8a-81-OhO" userLabel="BottomText">
+                                <rect key="frame" x="40" y="509" width="519" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" autocorrectionType="no"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="Q3u-QO-mku" firstAttribute="leading" secondItem="9L4-ue-xae" secondAttribute="leading" constant="20" id="0qq-Db-6oc"/>
                             <constraint firstItem="9L4-ue-xae" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="6GL-BS-Rbv"/>
                             <constraint firstItem="9L4-ue-xae" firstAttribute="bottom" secondItem="3ht-4W-T2e" secondAttribute="top" id="8Dz-a9-0Cl"/>
                             <constraint firstItem="3ht-4W-T2e" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="Cwp-Ty-l9Y"/>
+                            <constraint firstItem="Q3u-QO-mku" firstAttribute="trailing" secondItem="9L4-ue-xae" secondAttribute="trailing" constant="-20" id="Jdw-cD-wcr"/>
+                            <constraint firstItem="Q3u-QO-mku" firstAttribute="centerX" secondItem="9L4-ue-xae" secondAttribute="centerX" id="RxD-oC-nad"/>
+                            <constraint firstItem="x8a-81-OhO" firstAttribute="bottom" secondItem="9L4-ue-xae" secondAttribute="bottom" constant="-30" id="aIx-bZ-kyi"/>
+                            <constraint firstItem="x8a-81-OhO" firstAttribute="centerX" secondItem="9L4-ue-xae" secondAttribute="centerX" id="b3v-od-Py4"/>
                             <constraint firstItem="9L4-ue-xae" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="cKV-h9-Dxu"/>
                             <constraint firstItem="ulf-PG-xVi" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="ccw-fd-Hrf"/>
+                            <constraint firstItem="Q3u-QO-mku" firstAttribute="top" secondItem="9L4-ue-xae" secondAttribute="top" constant="30" id="jIY-3L-Vh2"/>
                             <constraint firstItem="3ht-4W-T2e" firstAttribute="trailing" secondItem="ulf-PG-xVi" secondAttribute="trailing" id="lF4-H9-yAf"/>
+                            <constraint firstItem="x8a-81-OhO" firstAttribute="leading" secondItem="9L4-ue-xae" secondAttribute="leading" constant="20" id="o2E-6e-JhW"/>
                             <constraint firstItem="ulf-PG-xVi" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="tv8-5i-dqq"/>
+                            <constraint firstItem="x8a-81-OhO" firstAttribute="trailing" secondItem="9L4-ue-xae" secondAttribute="trailing" constant="-20" id="wHY-Et-aNE"/>
                             <constraint firstItem="3ht-4W-T2e" firstAttribute="leading" secondItem="ulf-PG-xVi" secondAttribute="leading" id="x6w-LS-gab"/>
                             <constraint firstItem="9L4-ue-xae" firstAttribute="top" secondItem="ulf-PG-xVi" secondAttribute="bottom" id="xYm-PY-Ksb"/>
                             <constraint firstItem="ulf-PG-xVi" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailing" id="xhM-oS-PbG"/>
@@ -109,13 +127,16 @@
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>
                     <connections>
+                        <outlet property="bottomTextField" destination="x8a-81-OhO" id="MpQ-bh-aJb"/>
                         <outlet property="cameraButton" destination="Cc7-6n-iYB" id="QjM-cx-QMS"/>
                         <outlet property="imageView" destination="9L4-ue-xae" id="Hcs-To-nDc"/>
                         <outlet property="shareButton" destination="O7w-Kx-WQo" id="EY7-Rq-1xW"/>
+                        <outlet property="topTextField" destination="Q3u-QO-mku" id="tQC-RM-vOw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="375" y="587"/>
         </scene>
     </scenes>
 </document>
