@@ -21,7 +21,7 @@ class EditorViewController: UIViewController, UIImagePickerControllerDelegate, U
         super.viewDidLoad()
     }
     
-    @IBAction func pickAnImageFromLibrary(sender: UIBarButtonItem) {
+    @IBAction func pickAnImageFromAlbum(sender: UIBarButtonItem) {
         pickAnImage(.SavedPhotosAlbum)
     }
     
