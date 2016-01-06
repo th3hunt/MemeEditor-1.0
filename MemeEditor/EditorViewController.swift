@@ -15,10 +15,14 @@ class EditorViewController: UIViewController, UIImagePickerControllerDelegate, U
     @IBOutlet weak var imageView: UIImageView!
     
     override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
         imageView.contentMode = .ScaleAspectFit
         shareButton.enabled = false
         cameraButton.enabled = isCameraAvailable()
-        super.viewDidLoad()
     }
     
     //
