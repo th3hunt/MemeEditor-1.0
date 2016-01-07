@@ -135,7 +135,7 @@ class EditorViewController: UIViewController, UIImagePickerControllerDelegate, U
     private func subscribeToKeyboardNotifications() {
         let notificationCenter = NSNotificationCenter.defaultCenter()
         notificationCenter.addObserver(self, selector: "keyboardWillShow:", name: UIKeyboardWillShowNotification, object: nil)
-        notificationCenter.addObserver(self, selector: "keyboardWillShow:", name: UIKeyboardWillHideNotification, object: nil)
+        notificationCenter.addObserver(self, selector: "keyboardWillHide:", name: UIKeyboardWillHideNotification, object: nil)
     }
     
     private func unsubscribeFromKeyboardNotifications() {
