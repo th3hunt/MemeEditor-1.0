@@ -148,7 +148,7 @@ class EditorViewController: UIViewController, UIImagePickerControllerDelegate, U
     
     
     //
-    // Core Business methods
+    // Core business methods
     //
     
     private func pickAnImage(sourceType: UIImagePickerControllerSourceType) {
