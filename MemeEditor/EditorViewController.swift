@@ -29,6 +29,7 @@ class EditorViewController: UIViewController, UIImagePickerControllerDelegate, U
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         setupTextFields()
     }
     
@@ -123,7 +124,7 @@ class EditorViewController: UIViewController, UIImagePickerControllerDelegate, U
     }
     
     //
-    // Keyboard
+    // Keyboard events
     //
     
     func keyboardWillShow(notification: NSNotification) {
@@ -138,8 +139,15 @@ class EditorViewController: UIViewController, UIImagePickerControllerDelegate, U
     
     
     //
-    // Private Methods
+    // Core Business methods
     //
+    
+    private func pickAnImage(sourceType: UIImagePickerControllerSourceType) {
+        let imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
+        imagePicker.sourceType = sourceType
+        presentViewController(imagePicker, animated: true, completion: nil)
+    }
     
     private func generateMemedImage() -> UIImage {
         // Hide toolbar and navbar
@@ -152,16 +160,14 @@ class EditorViewController: UIViewController, UIImagePickerControllerDelegate, U
         
         // Render view to an image
         UIGraphicsBeginImageContext(self.view.frame.size)
-        self.view.drawViewHierarchyInRect(self.view.frame,
-            afterScreenUpdates: true)
-        let memedImage : UIImage =
-        UIGraphicsGetImageFromCurrentImageContext()
+        self.view.drawViewHierarchyInRect(self.view.frame, afterScreenUpdates: true)
+        let memedImage : UIImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         
         // Show toolbar and navbar
         navigationBar.hidden = false
         toolbar.hidden = false
-
+        
         // Restore empty text fields
         topTextField.hidden = false
         bottomTextField.hidden = false
@@ -169,12 +175,26 @@ class EditorViewController: UIViewController, UIImagePickerControllerDelegate, U
         return memedImage
     }
     
-    private func pickAnImage(sourceType: UIImagePickerControllerSourceType) {
-        let imagePicker = UIImagePickerController()
-        imagePicker.delegate = self
-        imagePicker.sourceType = sourceType
-        presentViewController(imagePicker, animated: true, completion: nil)
+    private func hasMemeToShare() -> Bool {
+        // we require an image and at least one piece of text
+        return imageView.image != nil && (!topTextField.text!.isEmpty || !bottomTextField.text!.isEmpty)
     }
+    
+    private func showError(message: String = "Oops! An unknown error occurred.") {
+        let alertController = UIAlertController(title: "Error", message: message, preferredStyle: UIAlertControllerStyle.Alert)
+        alertController.addAction(
+            UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default) {
+                [unowned self] (UIAlertAction) in
+                self.dismissViewControllerAnimated(true, completion: nil)
+            }
+        )
+        presentViewController(alertController, animated: true, completion: nil)
+    }
+    
+    
+    //
+    // Other private methods
+    //
     
     private func isCameraAvailable() -> Bool {
        return UIImagePickerController.isSourceTypeAvailable(.Camera)
@@ -204,11 +224,6 @@ class EditorViewController: UIViewController, UIImagePickerControllerDelegate, U
         shareButton.enabled = hasMemeToShare()
     }
     
-    private func hasMemeToShare() -> Bool {
-        // we require an image and at least one piece of text
-        return imageView.image != nil && (!topTextField.text!.isEmpty || !bottomTextField.text!.isEmpty)
-    }
-    
     private func subscribeToKeyboardNotifications() {
         let notificationCenter = NSNotificationCenter.defaultCenter()
         notificationCenter.addObserver(self, selector: "keyboardWillShow:", name: UIKeyboardWillShowNotification, object: nil)
@@ -225,17 +240,6 @@ class EditorViewController: UIViewController, UIImagePickerControllerDelegate, U
         let userInfo = notification.userInfo
         let keyboardSize = userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue // of CGRect
         return keyboardSize.CGRectValue().height
-    }
-    
-    private func showError(message: String = "Oops! An unknown error occurred.") {
-        let alertController = UIAlertController(title: "Error", message: message, preferredStyle: UIAlertControllerStyle.Alert)
-        alertController.addAction(
-            UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default) {
-                [unowned self] (UIAlertAction) in
-                self.dismissViewControllerAnimated(true, completion: nil)
-            }
-        )
-        presentViewController(alertController, animated: true, completion: nil)
     }
     
 }
