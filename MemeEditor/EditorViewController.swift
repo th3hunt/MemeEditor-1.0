@@ -15,6 +15,8 @@ class EditorViewController: UIViewController, UIImagePickerControllerDelegate, U
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var topTextField: UITextField!
     @IBOutlet weak var bottomTextField: UITextField!
+    @IBOutlet weak var navigationBar: UINavigationBar!
+    @IBOutlet weak var toolbar: UIToolbar!
     
     static let memeTextAttributes = [
         NSStrokeColorAttributeName: UIColor.blackColor(),
@@ -30,8 +32,11 @@ class EditorViewController: UIViewController, UIImagePickerControllerDelegate, U
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        
         imageView.contentMode = .ScaleAspectFit
-        toggleButtons()
+        shareButton.enabled = false
+        cameraButton.enabled = isCameraAvailable()
+        
         hideTextFields()
         subscribeToKeyboardNotifications()
     }
@@ -58,6 +63,16 @@ class EditorViewController: UIViewController, UIImagePickerControllerDelegate, U
         pickAnImage(.Camera)
     }
     
+    @IBAction func shareMeme(sender: UIBarButtonItem) {
+        guard hasMemeToShare() else {
+            return
+        }
+        
+        let memedImage = generateMemedImage()
+        let activityController = UIActivityViewController(activityItems: [memedImage], applicationActivities: [])
+        presentViewController(activityController, animated: true, completion: nil)
+    }
+    
     
     //
     // UIImagePickerControllerDelegate
@@ -68,6 +83,7 @@ class EditorViewController: UIViewController, UIImagePickerControllerDelegate, U
             if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
                 self.imageView.image = image
                 self.showTextFields()
+                self.toggleShareButton()
             } else {
                 self.showError("Could not select a picture")
             }
@@ -88,6 +104,13 @@ class EditorViewController: UIViewController, UIImagePickerControllerDelegate, U
         return true
     }
     
+    func textFieldDidBeginEditing(textField: UITextField) {
+        shareButton.enabled = false
+    }
+    
+    func textFieldDidEndEditing(textField: UITextField) {
+        toggleShareButton()
+    }
     
     //
     // Keyboard show/hide handlers
@@ -107,6 +130,26 @@ class EditorViewController: UIViewController, UIImagePickerControllerDelegate, U
     //
     // Private Methods
     //
+    
+    private func generateMemedImage() -> UIImage {
+        // Hide toolbar and navbar
+        navigationBar.hidden = true
+        toolbar.hidden = true
+        
+        // Render view to an image
+        UIGraphicsBeginImageContext(self.view.frame.size)
+        self.view.drawViewHierarchyInRect(self.view.frame,
+            afterScreenUpdates: true)
+        let memedImage : UIImage =
+        UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        // Show toolbar and navbar
+        navigationBar.hidden = false
+        toolbar.hidden = false
+        
+        return memedImage
+    }
     
     private func pickAnImage(sourceType: UIImagePickerControllerSourceType) {
         let imagePicker = UIImagePickerController()
@@ -139,9 +182,13 @@ class EditorViewController: UIViewController, UIImagePickerControllerDelegate, U
         bottomTextField.hidden = true
     }
     
-    private func toggleButtons() {
-        shareButton.enabled = false
-        cameraButton.enabled = isCameraAvailable()
+    private func toggleShareButton() {
+        shareButton.enabled = hasMemeToShare()
+    }
+    
+    private func hasMemeToShare() -> Bool {
+        // we require an image and at least one piece of text
+        return imageView.image != nil && (!topTextField.text!.isEmpty || !bottomTextField.text!.isEmpty)
     }
     
     private func subscribeToKeyboardNotifications() {
@@ -156,7 +203,7 @@ class EditorViewController: UIViewController, UIImagePickerControllerDelegate, U
         notificationCenter.removeObserver(self, name: UIKeyboardWillHideNotification, object: nil)
     }
     
-    func getKeyboardHeight(notification: NSNotification) -> CGFloat {
+    private func getKeyboardHeight(notification: NSNotification) -> CGFloat {
         let userInfo = notification.userInfo
         let keyboardSize = userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue // of CGRect
         return keyboardSize.CGRectValue().height
