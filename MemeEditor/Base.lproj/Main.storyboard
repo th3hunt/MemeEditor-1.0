@@ -23,7 +23,11 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                 <items>
                                     <navigationItem id="Qe2-js-ORV">
-                                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="O7w-Kx-WQo" userLabel="Share"/>
+                                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="O7w-Kx-WQo" userLabel="Share">
+                                            <connections>
+                                                <action selector="shareMeme:" destination="BYZ-38-t0r" id="tEa-Ym-gqv"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                                 <variation key="heightClass=regular" ambiguous="YES" misplaced="YES">
@@ -130,7 +134,9 @@
                         <outlet property="bottomTextField" destination="x8a-81-OhO" id="MpQ-bh-aJb"/>
                         <outlet property="cameraButton" destination="Cc7-6n-iYB" id="QjM-cx-QMS"/>
                         <outlet property="imageView" destination="9L4-ue-xae" id="Hcs-To-nDc"/>
+                        <outlet property="navigationBar" destination="ulf-PG-xVi" id="tZT-8Z-1it"/>
                         <outlet property="shareButton" destination="O7w-Kx-WQo" id="EY7-Rq-1xW"/>
+                        <outlet property="toolbar" destination="3ht-4W-T2e" id="9HV-bw-Mst"/>
                         <outlet property="topTextField" destination="Q3u-QO-mku" id="tQC-RM-vOw"/>
                     </connections>
                 </viewController>
