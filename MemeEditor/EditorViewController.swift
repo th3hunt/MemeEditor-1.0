@@ -17,6 +17,7 @@ class EditorViewController: UIViewController, UIImagePickerControllerDelegate, U
     @IBOutlet weak var bottomTextField: UITextField!
     @IBOutlet weak var navigationBar: UINavigationBar!
     @IBOutlet weak var toolbar: UIToolbar!
+    @IBOutlet weak var blankSlateLabel: UILabel!
 
     var meme: Meme!
     
@@ -95,6 +96,7 @@ class EditorViewController: UIViewController, UIImagePickerControllerDelegate, U
                 self.imageView.image = image
                 self.showTextFields()
                 self.toggleShareButton()
+                self.blankSlateLabel.hidden = true
             } else {
                 self.showError("Could not select a picture")
             }

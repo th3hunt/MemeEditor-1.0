@@ -67,6 +67,12 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" autocorrectionType="no" returnKeyType="done"/>
                             </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Take or select a picture to start!" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HGd-yc-xzo" userLabel="BlankSlateText">
+                                <rect key="frame" x="179" y="289" width="243" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -78,6 +84,7 @@
                             <constraint firstItem="Q3u-QO-mku" firstAttribute="centerX" secondItem="9L4-ue-xae" secondAttribute="centerX" id="RxD-oC-nad"/>
                             <constraint firstItem="x8a-81-OhO" firstAttribute="bottom" secondItem="9L4-ue-xae" secondAttribute="bottom" priority="750" constant="-30" id="aIx-bZ-kyi"/>
                             <constraint firstItem="x8a-81-OhO" firstAttribute="centerX" secondItem="9L4-ue-xae" secondAttribute="centerX" id="b3v-od-Py4"/>
+                            <constraint firstItem="HGd-yc-xzo" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="c0d-aV-EvN"/>
                             <constraint firstItem="9L4-ue-xae" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="cKV-h9-Dxu"/>
                             <constraint firstItem="ulf-PG-xVi" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="ccw-fd-Hrf"/>
                             <constraint firstItem="x8a-81-OhO" firstAttribute="bottom" secondItem="9L4-ue-xae" secondAttribute="bottom" constant="-60" id="eyh-ng-Bat"/>
@@ -90,6 +97,7 @@
                             <constraint firstItem="3ht-4W-T2e" firstAttribute="leading" secondItem="ulf-PG-xVi" secondAttribute="leading" id="x6w-LS-gab"/>
                             <constraint firstItem="9L4-ue-xae" firstAttribute="top" secondItem="ulf-PG-xVi" secondAttribute="bottom" id="xYm-PY-Ksb"/>
                             <constraint firstItem="ulf-PG-xVi" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailing" id="xhM-oS-PbG"/>
+                            <constraint firstItem="HGd-yc-xzo" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="yQJ-K7-7Fc"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
@@ -106,6 +114,7 @@
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>
                     <connections>
+                        <outlet property="blankSlateLabel" destination="HGd-yc-xzo" id="eQM-9l-9BJ"/>
                         <outlet property="bottomTextField" destination="x8a-81-OhO" id="MpQ-bh-aJb"/>
                         <outlet property="cameraButton" destination="Cc7-6n-iYB" id="QjM-cx-QMS"/>
                         <outlet property="imageView" destination="9L4-ue-xae" id="Hcs-To-nDc"/>
