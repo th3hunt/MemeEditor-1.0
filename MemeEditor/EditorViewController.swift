@@ -8,7 +8,7 @@
 
 import UIKit
 
-class EditorViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class EditorViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
 
     @IBOutlet weak var shareButton: UIBarButtonItem!
     @IBOutlet weak var cameraButton: UIBarButtonItem!
@@ -80,7 +80,17 @@ class EditorViewController: UIViewController, UIImagePickerControllerDelegate, U
     
     
     //
-    // Keyboard Notification Handlers
+    // UITextFieldDelegate
+    //
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    
+    //
+    // Keyboard show/hide handlers
     //
     
     func keyboardWillShow(notification: NSNotification) {
@@ -112,9 +122,11 @@ class EditorViewController: UIViewController, UIImagePickerControllerDelegate, U
     private func setupTextFields() {
         topTextField.defaultTextAttributes = EditorViewController.memeTextAttributes
         topTextField.textAlignment = .Center
+        topTextField.delegate = self
 
         bottomTextField.defaultTextAttributes = EditorViewController.memeTextAttributes
         bottomTextField.textAlignment = .Center
+        bottomTextField.delegate = self
     }
     
     private func showTextFields() {
