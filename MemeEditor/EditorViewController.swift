@@ -17,6 +17,7 @@ class EditorViewController: UIViewController, UIImagePickerControllerDelegate, U
     @IBOutlet weak var bottomTextField: UITextField!
     @IBOutlet weak var navigationBar: UINavigationBar!
     @IBOutlet weak var toolbar: UIToolbar!
+
     
     static let memeTextAttributes = [
         NSStrokeColorAttributeName: UIColor.blackColor(),
@@ -116,10 +117,9 @@ class EditorViewController: UIViewController, UIImagePickerControllerDelegate, U
     // Keyboard show/hide handlers
     //
     
-    // TODO: handle orientation change as well
     func keyboardWillShow(notification: NSNotification) {
         if bottomTextField.isFirstResponder() {
-            view.frame.origin.y -= getKeyboardHeight(notification)
+            view.frame.origin.y = -getKeyboardHeight(notification)
         }
     }
     
