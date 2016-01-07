@@ -18,6 +18,7 @@ class EditorViewController: UIViewController, UIImagePickerControllerDelegate, U
     @IBOutlet weak var navigationBar: UINavigationBar!
     @IBOutlet weak var toolbar: UIToolbar!
 
+    var meme: Meme!
     
     static let memeTextAttributes = [
         NSStrokeColorAttributeName: UIColor.blackColor(),
@@ -71,6 +72,14 @@ class EditorViewController: UIViewController, UIImagePickerControllerDelegate, U
         
         let memedImage = generateMemedImage()
         let activityController = UIActivityViewController(activityItems: [memedImage], applicationActivities: [])
+        activityController.completionWithItemsHandler = {
+            (activityType, completed, items, error) in
+            if completed {
+                self.meme = Meme(memedImage, topText: self.topTextField.text!, bottomText: self.bottomTextField.text!,
+                    originalImage: self.imageView.image!)
+            }
+        }
+        
         presentViewController(activityController, animated: true, completion: nil)
     }
     
@@ -114,7 +123,7 @@ class EditorViewController: UIViewController, UIImagePickerControllerDelegate, U
     }
     
     //
-    // Keyboard show/hide handlers
+    // Keyboard
     //
     
     func keyboardWillShow(notification: NSNotification) {
