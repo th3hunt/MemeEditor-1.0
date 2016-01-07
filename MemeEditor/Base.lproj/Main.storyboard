@@ -58,7 +58,7 @@
                                 </variation>
                             </imageView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="TOP" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Q3u-QO-mku" userLabel="TopText">
-                                <rect key="frame" x="40" y="74" width="519" height="17"/>
+                                <rect key="frame" x="40" y="64" width="519" height="17"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" autocorrectionType="no" returnKeyType="done"/>
                             </textField>
@@ -76,11 +76,13 @@
                             <constraint firstItem="3ht-4W-T2e" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="Cwp-Ty-l9Y"/>
                             <constraint firstItem="Q3u-QO-mku" firstAttribute="trailing" secondItem="9L4-ue-xae" secondAttribute="trailing" constant="-20" id="Jdw-cD-wcr"/>
                             <constraint firstItem="Q3u-QO-mku" firstAttribute="centerX" secondItem="9L4-ue-xae" secondAttribute="centerX" id="RxD-oC-nad"/>
-                            <constraint firstItem="x8a-81-OhO" firstAttribute="bottom" secondItem="9L4-ue-xae" secondAttribute="bottom" constant="-30" id="aIx-bZ-kyi"/>
+                            <constraint firstItem="x8a-81-OhO" firstAttribute="bottom" secondItem="9L4-ue-xae" secondAttribute="bottom" priority="750" constant="-30" id="aIx-bZ-kyi"/>
                             <constraint firstItem="x8a-81-OhO" firstAttribute="centerX" secondItem="9L4-ue-xae" secondAttribute="centerX" id="b3v-od-Py4"/>
                             <constraint firstItem="9L4-ue-xae" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="cKV-h9-Dxu"/>
                             <constraint firstItem="ulf-PG-xVi" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="ccw-fd-Hrf"/>
-                            <constraint firstItem="Q3u-QO-mku" firstAttribute="top" secondItem="9L4-ue-xae" secondAttribute="top" constant="30" id="jIY-3L-Vh2"/>
+                            <constraint firstItem="x8a-81-OhO" firstAttribute="bottom" secondItem="9L4-ue-xae" secondAttribute="bottom" constant="-60" id="eyh-ng-Bat"/>
+                            <constraint firstItem="Q3u-QO-mku" firstAttribute="top" secondItem="9L4-ue-xae" secondAttribute="top" priority="750" constant="20" id="gb6-U3-f3H"/>
+                            <constraint firstItem="Q3u-QO-mku" firstAttribute="top" secondItem="9L4-ue-xae" secondAttribute="top" constant="60" id="jIY-3L-Vh2"/>
                             <constraint firstItem="3ht-4W-T2e" firstAttribute="trailing" secondItem="ulf-PG-xVi" secondAttribute="trailing" id="lF4-H9-yAf"/>
                             <constraint firstItem="x8a-81-OhO" firstAttribute="leading" secondItem="9L4-ue-xae" secondAttribute="leading" constant="20" id="o2E-6e-JhW"/>
                             <constraint firstItem="ulf-PG-xVi" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="tv8-5i-dqq"/>
@@ -89,6 +91,18 @@
                             <constraint firstItem="9L4-ue-xae" firstAttribute="top" secondItem="ulf-PG-xVi" secondAttribute="bottom" id="xYm-PY-Ksb"/>
                             <constraint firstItem="ulf-PG-xVi" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailing" id="xhM-oS-PbG"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="jIY-3L-Vh2"/>
+                                <exclude reference="eyh-ng-Bat"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular">
+                            <mask key="constraints">
+                                <include reference="jIY-3L-Vh2"/>
+                                <include reference="eyh-ng-Bat"/>
+                            </mask>
+                        </variation>
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>
                     <connections>

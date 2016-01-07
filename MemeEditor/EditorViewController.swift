@@ -116,6 +116,7 @@ class EditorViewController: UIViewController, UIImagePickerControllerDelegate, U
     // Keyboard show/hide handlers
     //
     
+    // TODO: handle orientation change as well
     func keyboardWillShow(notification: NSNotification) {
         if bottomTextField.isFirstResponder() {
             view.frame.origin.y -= getKeyboardHeight(notification)
@@ -136,6 +137,10 @@ class EditorViewController: UIViewController, UIImagePickerControllerDelegate, U
         navigationBar.hidden = true
         toolbar.hidden = true
         
+        // Hide empty text fields
+        topTextField.hidden = topTextField.text!.isEmpty
+        bottomTextField.hidden = bottomTextField.text!.isEmpty
+        
         // Render view to an image
         UIGraphicsBeginImageContext(self.view.frame.size)
         self.view.drawViewHierarchyInRect(self.view.frame,
@@ -147,6 +152,10 @@ class EditorViewController: UIViewController, UIImagePickerControllerDelegate, U
         // Show toolbar and navbar
         navigationBar.hidden = false
         toolbar.hidden = false
+
+        // Restore empty text fields
+        topTextField.hidden = false
+        bottomTextField.hidden = false
         
         return memedImage
     }
