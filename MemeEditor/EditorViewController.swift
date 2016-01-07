@@ -21,11 +21,18 @@ class EditorViewController: UIViewController, UIImagePickerControllerDelegate, U
 
     var meme: Meme!
     
-    static let memeTextAttributes = [
+    let memeTextAttributes = [
         NSStrokeColorAttributeName: UIColor.blackColor(),
         NSForegroundColorAttributeName: UIColor.whiteColor(),
         NSFontAttributeName: UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
         NSStrokeWidthAttributeName: -2.0 // a negative value indicates stroke with fill https://developer.apple.com/library/mac/qa/qa1531/_index.html
+    ]
+    
+    let placeholderTextAttributes = [
+        NSStrokeColorAttributeName: UIColor.blackColor(),
+        NSForegroundColorAttributeName: UIColor(white: 0.75, alpha: 0.5),
+        NSFontAttributeName: UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
+        NSStrokeWidthAttributeName: -1.0 // a negative value indicates stroke with fill https://developer.apple.com/library/mac/qa/qa1531/_index.html
     ]
     
     override func viewDidLoad() {
@@ -203,11 +210,13 @@ class EditorViewController: UIViewController, UIImagePickerControllerDelegate, U
     }
     
     private func setupTextFields() {
-        topTextField.defaultTextAttributes = EditorViewController.memeTextAttributes
+        topTextField.defaultTextAttributes = memeTextAttributes
+        topTextField.attributedPlaceholder = NSAttributedString(string: "TOP", attributes: placeholderTextAttributes)
         topTextField.textAlignment = .Center
         topTextField.delegate = self
 
-        bottomTextField.defaultTextAttributes = EditorViewController.memeTextAttributes
+        bottomTextField.defaultTextAttributes = memeTextAttributes
+        bottomTextField.attributedPlaceholder = NSAttributedString(string: "BOTTOM", attributes: placeholderTextAttributes)
         bottomTextField.textAlignment = .Center
         bottomTextField.delegate = self
     }
